@@ -25,33 +25,17 @@ Blockchain.prototype.createNewBlock= function(nonce,previousBlockHash, hash){
 	 	previousBlockHash: previousBlockHash 
 	 };
 
-	 console.log('zzzzzzzzzzzzzzzzzzzzzzzzd')
-	 console.log(data.pendingTransactions);
-	 console.log('zzzzzzzzzzzzzzzzzzzzzzzz')
+	 // console.log('zzzzzzzzzzzzzzzzzzzzzzzzd')
+	 // console.log(data.pendingTransactions);
+	 // console.log('zzzzzzzzzzzzzzzzzzzzzzzz')
 
 
-	  const t=data.chain.length-1;
-
-	 // console.log('aaaaaaaaaaaaaa')
-	 // // console.log(data.pendingTransactions);
-	 // const ts= data.chain[t];
-	 // console.log(ts);
-
-	 // console.log('aaaaaaaaaaaaaa')
-	 	
-	 //data.chain.transactions.push(pendingTransactions);
-	 //data.chain[t].transactions.push(data.pendingTransactions);
+	 const t=data.chain.length-1;
 	 data.chain.push(newBlock)
 	 data.pendingTransactions=[];
 
 	 this.pendingTransactions=[];
-	 this.chain.push(newBlock);
-
-
-
-
-	 
-	 //data.save();
+	 this.chain.push(newBlock); 
 	 return newBlock;
 }
 
@@ -61,7 +45,6 @@ Blockchain.prototype.getLastBlock= function(){
 }
 
 //Create new transaction
-//amout means 'montant'
 Blockchain.prototype.createNewTransaction= function(amount,sender,recipient){
 	const newTransaction={
 		amount:amount,
@@ -95,7 +78,6 @@ Blockchain.prototype.proofOfWork=function(previousBlockHash,currentBlockData){
 	while(hash.substring(0,4)!='0000'){
 		nonce++;
 		hash=this.hashBlock(previousBlockHash,currentBlockData,nonce);
-		//console.log(hash);
 	}
 	return nonce;
 }
